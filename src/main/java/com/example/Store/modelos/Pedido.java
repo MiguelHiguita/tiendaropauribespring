@@ -10,6 +10,14 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime FechaYHora;
+    @Column(name ="fechaYHora",nullable = false)
+    private LocalDateTime fechaYHora;
 
+    public Pedido() {
+    }
+
+    public Pedido(Integer id, LocalDateTime fechaYHora) {
+        this.id = id;
+        this.fechaYHora = fechaYHora;
+    }
 }
