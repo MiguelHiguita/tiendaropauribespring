@@ -31,4 +31,44 @@ public class Marca {
         this.anoCreacion = anoCreacion;
         this.sedePrincipal = sedePrincipal;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombreMarca() {
+        return nombreMarca;
+    }
+
+    public void setNombreMarca(String nombreMarca) {
+        this.nombreMarca = nombreMarca;
+    }
+
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    public LocalDate getAnoCreacion() {
+        return anoCreacion;
+    }
+
+    public void setAnoCreacion(LocalDate anoCreacion) {
+        this.anoCreacion = anoCreacion;
+    }
+
+    public String getSedePrincipal() {
+        return sedePrincipal;
+    }
+
+    public void setSedePrincipal(String sedePrincipal) {
+        this.sedePrincipal = sedePrincipal;
+    }
 }
