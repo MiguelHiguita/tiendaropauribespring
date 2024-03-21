@@ -11,7 +11,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name ="fechaYHora",nullable = false)
-    private LocalDateTime fechaYHora;
+    private LocalDateTime fechaYHora; //no vacio y formato internacional
 
     public Pedido() {
     }

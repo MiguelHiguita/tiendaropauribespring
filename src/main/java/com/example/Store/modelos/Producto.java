@@ -8,20 +8,20 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name ="nombreProducto",nullable = false, length = 20)
-    private String nombreProducto;
-    @Column(name ="referencia",nullable = false, length = 30)
-    private String referencia;
+    @Column(name ="nombreProducto",nullable = false, length = 60)
+    private String nombreProducto; //no vacio solo letras y espacios long 60
+    @Column(name ="referencia",nullable = false, length = 14)
+    private String referencia; //no vacio long 14
     @Column(name ="talla",nullable = false, length = 10)
-    private String talla;
+    private String talla; //maximo 3 caracteres
     @Column(name ="cantidadBodega",nullable = false)
-    private Integer cantidadBodega;
+    private Integer cantidadBodega; //solo numeros positivos
     @Column(name ="precioUnitario",nullable = false)
-    private Integer precioUnitario;
+    private Integer precioUnitario; //solo numeros positivos
     @Column(name ="descripcion",nullable = false, length = 100)
-    private String descripcion;
+    private String descripcion; //long 100
     @Column(name ="fotografia",nullable = false, length = 254)
-    private String fotografia;
+    private String fotografia; //no vacio max 250 caracteres
 
     public Producto() {
     }

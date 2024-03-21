@@ -8,8 +8,8 @@ public class TipoPrenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name ="nombre",nullable = false, length = 20)
-    private String nombre;
+    @Column(name ="nombre",nullable = false, length = 80)
+    private String nombre; //no vacio solo letras y espacios y longitud 80 max
 
     public TipoPrenda() {
     }

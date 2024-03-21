@@ -12,14 +12,14 @@ public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name ="nombreMarca",nullable = false, length = 30)
-    private String nombreMarca;
-    @Column(name ="nit",nullable = false, length = 50)
-    private String nit;
+    @Column(name ="nombreMarca",nullable = false, length = 50)
+    private String nombreMarca; //no vacio y maximo 50 caracteres
+    @Column(name ="nit",nullable = false, length = 10)
+    private String nit; //no vacio solo numeros y long max 10
     @Column(name ="anoCreacion",nullable = false)
-    private LocalDate anoCreacion;
+    private LocalDate anoCreacion; //no vacio formato internacional
     @Column(name ="sedePrincipal",nullable = false, length = 20)
-    private String sedePrincipal;
+    private String sedePrincipal; //no valida
 
     public Marca() {
     }
