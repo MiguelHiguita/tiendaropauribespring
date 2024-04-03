@@ -1,5 +1,6 @@
 package com.example.Store.modelos;
 
+import com.example.Store.helpers.ValidacionProducto;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private ValidacionProducto validacion = new ValidacionProducto();
     @Column(name ="nombreProducto",nullable = false, length = 60)
     private String nombreProducto; //no vacio solo letras y espacios long 60
     @Column(name ="referencia",nullable = false, length = 14)
@@ -50,7 +52,11 @@ public class Producto {
     }
 
     public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+        try{
+            this.validacion.validarNombreProducto(nombreProducto);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getReferencia() {
@@ -58,7 +64,11 @@ public class Producto {
     }
 
     public void setReferencia(String referencia) {
-        this.referencia = referencia;
+        try{
+            this.validacion.validarReferencia(referencia);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getTalla() {
@@ -66,23 +76,35 @@ public class Producto {
     }
 
     public void setTalla(String talla) {
-        this.talla = talla;
+        try{
+            this.validacion.validarTalla(talla);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public Integer getCantidadBodega() {
         return cantidadBodega;
     }
 
-    public void setCantidadBodega(Integer cantidadBodega) {
-        this.cantidadBodega = cantidadBodega;
+    public void setCantidadBodega(String cantidadBodega) {
+        try{
+            this.validacion.validarCantidadBodega(cantidadBodega);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public Integer getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(Integer precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setPrecioUnitario(String precioUnitario) {
+        try{
+            this.validacion.validarPrecioUnitario(precioUnitario);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getDescripcion() {
@@ -90,7 +112,11 @@ public class Producto {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        try{
+            this.validacion.validarDescripcion(descripcion);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getFotografia() {
@@ -98,6 +124,10 @@ public class Producto {
     }
 
     public void setFotografia(String fotografia) {
-        this.fotografia = fotografia;
+        try{
+            this.validacion.validarFotografia(fotografia);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 }

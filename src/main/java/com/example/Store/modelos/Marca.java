@@ -1,5 +1,7 @@
 package com.example.Store.modelos;
 
+import com.example.Store.helpers.ValidacionMarca;
+import com.example.Store.helpers.ValidacionUsuario;
 import jakarta.persistence.*;
 
 import java.awt.*;
@@ -12,6 +14,7 @@ public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private ValidacionMarca validacion = new ValidacionMarca();
     @Column(name ="nombreMarca",nullable = false, length = 50)
     private String nombreMarca; //no vacio y maximo 50 caracteres
     @Column(name ="nit",nullable = false, length = 10)
@@ -45,7 +48,11 @@ public class Marca {
     }
 
     public void setNombreMarca(String nombreMarca) {
-        this.nombreMarca = nombreMarca;
+        try{
+            this.validacion.validarNombreMarca(nombreMarca);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getNit() {
@@ -53,15 +60,23 @@ public class Marca {
     }
 
     public void setNit(String nit) {
-        this.nit = nit;
+        try{
+            this.validacion.validarNit(nit);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public LocalDate getAnoCreacion() {
         return anoCreacion;
     }
 
-    public void setAnoCreacion(LocalDate anoCreacion) {
-        this.anoCreacion = anoCreacion;
+    public void setAnoCreacion(String anoCreacion) {
+        try{
+            this.validacion.validarAnoCreacion(anoCreacion);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getSedePrincipal() {

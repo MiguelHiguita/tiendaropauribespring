@@ -1,5 +1,6 @@
 package com.example.Store.modelos;
 
+import com.example.Store.helpers.ValidacionTipoPrenda;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class TipoPrenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private ValidacionTipoPrenda validacion = new ValidacionTipoPrenda();
     @Column(name ="nombre",nullable = false, length = 80)
     private String nombre; //no vacio solo letras y espacios y longitud 80 max
 
@@ -32,6 +34,10 @@ public class TipoPrenda {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        try{
+            this.validacion.validarNombre(nombre);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 }

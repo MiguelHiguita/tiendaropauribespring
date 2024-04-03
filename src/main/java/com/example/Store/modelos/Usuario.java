@@ -1,5 +1,6 @@
 package com.example.Store.modelos;
 
+import com.example.Store.helpers.ValidacionUsuario;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private ValidacionUsuario validacion = new ValidacionUsuario();
 
     @Column(name ="nombres",nullable = false, length = 50)
     private String nombres; //no vacio-solo letras y espacios-long max 50 caracteres
@@ -63,7 +65,11 @@ public class Usuario {
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        try{
+            this.validacion.validarNombres(nombres);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getApellidos() {
@@ -79,7 +85,11 @@ public class Usuario {
     }
 
     public void setCedula(String cedula) {
-        this.cedula = cedula;
+        try{
+            this.validacion.validarCedula(cedula);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getCorreo() {
@@ -87,7 +97,11 @@ public class Usuario {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        try{
+            this.validacion.validarCorreo(correo);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getDireccion() {
@@ -103,7 +117,11 @@ public class Usuario {
     }
 
     public void setSexo(String sexo) {
-        this.sexo = sexo;
+        try{
+            this.validacion.validarSexo(sexo);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getMedioPago() {
@@ -143,6 +161,10 @@ public class Usuario {
     }
 
     public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+        try{
+            this.validacion.validarCodigoPostal(codigoPostal);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.Store.modelos;
 
+import com.example.Store.helpers.ValidacionPedido;
+import com.example.Store.helpers.ValidacionUsuario;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -10,6 +12,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private ValidacionPedido validacion = new ValidacionPedido();
     @Column(name ="fechaYHora",nullable = false)
     private LocalDateTime fechaYHora; //no vacio y formato internacional
 
@@ -33,7 +36,11 @@ public class Pedido {
         return fechaYHora;
     }
 
-    public void setFechaYHora(LocalDateTime fechaYHora) {
-        this.fechaYHora = fechaYHora;
+    public void setFechaYHora(String fechaYHora) {
+        try{
+            this.validacion.validarFechaYHora(fechaYHora);
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 }
